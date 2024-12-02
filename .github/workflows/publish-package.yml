@@ -23,6 +23,7 @@ jobs:
         registry-url: https://registry.npmjs.org
         scope: '@larino'
     - run: |
+        cd package
         npm install
         npm publish
     env:

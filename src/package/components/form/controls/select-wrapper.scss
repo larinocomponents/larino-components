@@ -1,0 +1,73 @@
+:host {
+    $spacing: 8px;
+    $icon_size: 14px;
+    
+    --accent-color: #0635ac;
+    height: max-content;
+    width: max-content;
+
+    .wrapper {
+        background: #fff;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        color: rgb(104, 104, 104);
+        font-size: 14px;
+        padding: $spacing;
+        padding-right: calc($icon_size + ($spacing * 2));
+        position: relative;
+        
+        .placeholder {
+            color: #737373;
+            display: none;
+        }
+    
+        .value {
+            color: rgb(25, 25, 25);
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+
+            &:empty + .placeholder {
+                display: block;
+            }
+        }
+        
+        ::slotted(select),
+        select {
+            appearance: none;
+            opacity: 0;
+            position: absolute;
+            inset: 0;
+        }
+        
+        svg {
+            fill: rgb(104, 104, 104);
+            flex-shrink: 0;
+            height: $icon_size;
+            position: absolute;
+            top: calc((100% - $icon_size) / 2);
+            right: $spacing;
+            width: $icon_size;
+        }
+    
+        &:hover {
+            box-shadow: inset 0 0 0 1px #afafaf;
+        }
+
+        &:focus-within {
+            box-shadow:
+                inset 0 0 0 1px var(--accent-color),
+                0 0 0 3px rgb(24 88 247 / 20%);
+        }
+    }
+}
+
+:host([disabled]) {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .wrapper {
+        background-color: #f2f2f2;
+        pointer-events: none;
+    }
+}

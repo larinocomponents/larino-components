@@ -3,3 +3,21 @@
     placeholder="Enter text here..."
     max-lines="5">
 </text-field>
+
+<select-wrapper id="select-wrapper">
+    <select>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+    </select>
+</select-wrapper>
+
+<bound-select
+    id="bound-select"
+    value-prop="id"
+    text-prop="name">
+</bound-select>
+
+<button id="change-options">Change Options</button>
+<button id="clear-options">Clear Options</button>

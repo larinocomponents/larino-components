@@ -1,26 +1,29 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const WebpackObfuscator = require('webpack-obfuscator')
 
 module.exports = (_, {mode}) => {
     const isDevelopment = mode === 'development'
 
     return {
         target: 'web',
-        entry: { index: './index.ts' },
+        entry: './main.ts',
         output: {
             path: path.resolve(__dirname, 'build'),
             filename: '[name].js',
             clean: true,
+            module: true,
+            library: {
+                type: 'module'
+            }
+        },
+        experiments: {
+          outputModule: true,
         },
         plugins: [
             new MiniCssExtractPlugin({
                 filename : 'styles/[name].css'
             }),
-            !isDevelopment && new WebpackObfuscator({
-                rotateStringArray: true
-            })
-        ].filter(Boolean),
+        ],
         module: {
             rules: [
                 {
@@ -29,26 +32,20 @@ module.exports = (_, {mode}) => {
                     exclude: /node_modules/,
                 },
                 {
-                    // For *.component.scss
-                    test: /\.component\.s[ac]ss$/,
-                    use: [
-                        'css-loader',
-                        {
-                            loader: 'sass-loader',
-                            options: { api: 'modern' }
-                        }
-                    ],
-                },
-                // For *.scss
-                {
                     test: /\.s[ac]ss$/,
-                    exclude: /\.component\.s[ac]ss$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
-                        'css-loader',
+                        {
+                            loader: 'lit-scss-loader',
+                            options: { minify: !isDevelopment }
+                        },
                         {
                             loader: 'sass-loader',
-                            options: { api: 'modern' }
+                            options: {
+                                api: 'modern',
+                                sassOptions: {
+                                    outputStyle: 'compressed'
+                                },
+                            }
                         }
                     ],
                 },

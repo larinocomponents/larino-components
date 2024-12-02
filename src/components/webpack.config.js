@@ -1,26 +1,29 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const WebpackObfuscator = require('webpack-obfuscator')
 
 module.exports = (_, {mode}) => {
     const isDevelopment = mode === 'development'
 
     return {
         target: 'web',
-        entry: { index: './index.ts' },
+        entry: './index.ts',
         output: {
             path: path.resolve(__dirname, 'build'),
             filename: '[name].js',
             clean: true,
+            module: true,
+            library: {
+                type: 'module'
+            }
+        },
+        experiments: {
+          outputModule: true,
         },
         plugins: [
             new MiniCssExtractPlugin({
                 filename : 'styles/[name].css'
             }),
-            !isDevelopment && new WebpackObfuscator({
-                rotateStringArray: true
-            })
-        ].filter(Boolean),
+        ],
         module: {
             rules: [
                 {

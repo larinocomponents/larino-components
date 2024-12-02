@@ -71,7 +71,7 @@ module.exports = (_, {mode}) => {
                 directory: path.join(__dirname, 'build'),
             },
             compress: true,
-            port: 3090,
+            port: 6002,
         },
         devtool: isDevelopment ? 'inline-source-map' : false
     }

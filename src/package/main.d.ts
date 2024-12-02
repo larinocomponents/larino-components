@@ -7,6 +7,14 @@ export interface TextField extends LitElement {
   value: string
 }
 
+export interface NumberField extends LitElement {
+  min: string
+  steps: string
+  placeholder: string
+  disabled: boolean
+  value: string
+}
+
 export interface SelectWrapper extends LitElement {
   placeholder: string
   value: string
@@ -28,6 +36,7 @@ export interface BoundSelect<T> extends LitElement {
 declare global {
   interface HTMLElementTagNameMap {
     'text-field': TextField
+    'number-field': NumberField
     'select-wrapper': SelectWrapper
     'bound-select': BoundSelect<any>
   }

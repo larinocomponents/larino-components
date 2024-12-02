@@ -1,0 +1,30 @@
+:host {
+    --accent-color: #0635ac;
+    height: max-content;
+
+    .control {
+        appearance: none;
+        background: #fff;
+        border: solid 1px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-family: 'Geist', sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-optical-sizing: auto;
+        outline: none;
+        padding: 8px;
+        resize: none;
+        transition: border-color 0.2s ease-out;
+        width: 100%;
+    
+        &:hover {
+            border-color: #afafaf;
+        }
+
+        &:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgb(24 88 247 / 20%);
+        }
+    }
+}

@@ -23,7 +23,7 @@ jobs:
         registry-url: https://registry.npmjs.org
         scope: '@larino'
     - run: |
-        npm ci
+        npm install
         npm publish
     env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

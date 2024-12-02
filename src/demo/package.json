@@ -34,6 +34,6 @@
     "webpack-obfuscator": "^3.5.1"
   },
   "dependencies": {
-    "@larino/components": "file:.yalc/@larino/components"
+    "lit": "^3.2.1"
   }
 }

@@ -1,7 +1,14 @@
-import { SimpleGreeting } from './components'
+import { LitElement } from 'lit'
+
+export interface TextField extends LitElement {
+  type: string
+  placeholder: string
+  disabled: boolean
+  value: string
+}
 
 declare global {
   interface HTMLElementTagNameMap {
-    'simple-greeting': SimpleGreeting
+    'text-field': TextField
   }
 }

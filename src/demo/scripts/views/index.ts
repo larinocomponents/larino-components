@@ -1,7 +1,10 @@
-import 'larino-components'
+import '@larino/components'
+
+import { TextField } from '@larino/components'
 
 document.addEventListener('DOMContentLoaded', () => {
-    const greeting = document.createElement('simple-greeting')
-    greeting.name = 'Sample!'
-    document.body.append(greeting)
+    const textField = document.querySelector('#text-field') as TextField
+    textField.oninput = () => {
+        console.log(textField.value)
+    }
 })

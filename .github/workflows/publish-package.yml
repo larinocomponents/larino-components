@@ -25,6 +25,6 @@ jobs:
     - run: |
         cd src/package
         npm install
-        npm publish
+        npm publish --access public
     env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

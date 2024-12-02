@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "description": "Custom web components.",
   "main": "build/main.js",
+  "types": "main.d.ts",
   "files": [
-    "build"
+    "build",
+    "main.d.ts"
   ],
   "scripts": {
     "build:dev": "webpack --mode=development",
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/larinocomponents/larino-components#readme",
   "devDependencies": {
     "css-loader": "^6.8.1",
+    "lit-scss-loader": "^2.0.1",
     "mini-css-extract-plugin": "^2.7.6",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",

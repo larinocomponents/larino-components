@@ -6,7 +6,7 @@ module.exports = (_, {mode}) => {
 
     return {
         target: 'web',
-        entry: './index.ts',
+        entry: './main.ts',
         output: {
             path: path.resolve(__dirname, 'build'),
             filename: '[name].js',
@@ -32,26 +32,20 @@ module.exports = (_, {mode}) => {
                     exclude: /node_modules/,
                 },
                 {
-                    // For *.component.scss
-                    test: /\.component\.s[ac]ss$/,
-                    use: [
-                        'css-loader',
-                        {
-                            loader: 'sass-loader',
-                            options: { api: 'modern' }
-                        }
-                    ],
-                },
-                // For *.scss
-                {
                     test: /\.s[ac]ss$/,
-                    exclude: /\.component\.s[ac]ss$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
-                        'css-loader',
+                        {
+                            loader: 'lit-scss-loader',
+                            options: { minify: !isDevelopment }
+                        },
                         {
                             loader: 'sass-loader',
-                            options: { api: 'modern' }
+                            options: {
+                                api: 'modern',
+                                sassOptions: {
+                                    outputStyle: 'compressed'
+                                },
+                            }
                         }
                     ],
                 },

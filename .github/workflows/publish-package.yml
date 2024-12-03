@@ -1,9 +1,8 @@
 name: 🚀 Publish Package
 
 on:
-  push:
-      branches:
-        - release
+  release:
+    types: [published]
 
 jobs:
   publish:

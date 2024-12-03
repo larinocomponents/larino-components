@@ -1,5 +1,5 @@
-import '@larino/components'
-import { BoundSelect, NumberField, SelectWrapper, TextField } from '@larino/components'
+import '@larinonpm/components'
+import { BoundSelect, NumberField, SelectWrapper, TextField } from '@larinonpm/components'
 
 interface OptionType {
     id: number

@@ -1,0 +1,66 @@
+:host {
+    --accent-color: #0635ac;
+    display: inline-block;
+    margin: 2px 4px;
+
+    .wrapper {
+        $indicator-size: 18px;
+
+        cursor: pointer;
+        display: grid;
+        width: max-content;
+
+        .indicator {
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: inset 0 0 0 1px #ccc;
+            display: flex;
+            grid-area: 1 / 1;
+            height: $indicator-size;
+            justify-content: center;
+            width: $indicator-size;
+
+            svg { stroke: transparent; }
+
+            &.checked {
+                background-color: var(--accent-color);
+                box-shadow: none !important;
+                
+                svg { stroke: #fff; }
+            }
+        }
+        
+        &:hover .indicator {
+            background-color: #f2f2f2;
+            box-shadow: inset 0 0 0 1px #b3b3b3;
+
+            &.checked {
+                background-color: #0949ec;
+            }
+        }
+
+        slot {
+            align-items: center;
+            display: flex;
+            gap: 6px;
+            grid-area: 1 / 1;
+    
+            &::slotted(label) {
+                cursor: pointer;
+                color: rgb(25, 25, 25);
+                font-size: 14px;
+                font-weight: 400;
+                font-variation-settings: 'wght' 400;
+                user-select: none;
+            }
+    
+            &::slotted(input) {
+                cursor: pointer;
+                height: $indicator-size;
+                margin: 0;
+                opacity: 0;
+                width: $indicator-size;
+            }
+        }
+    }
+}

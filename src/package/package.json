@@ -1,5 +1,5 @@
 {
-  "name": "@larino/components",
+  "name": "@larinonpm/components",
   "version": "0.1.0",
   "description": "Custom web components.",
   "main": "build/main.js",

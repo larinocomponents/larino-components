@@ -33,11 +33,16 @@ export interface BoundSelect<T> extends LitElement {
   clear(): void
 }
 
+export interface CheckboxWrapper extends LitElement {
+  value: boolean
+}
+
 declare global {
   interface HTMLElementTagNameMap {
     'text-field': TextField
     'number-field': NumberField
     'select-wrapper': SelectWrapper
     'bound-select': BoundSelect<any>
+    'checkbox-wrapper': CheckboxWrapper
   }
 }

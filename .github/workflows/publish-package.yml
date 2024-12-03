@@ -7,6 +7,7 @@ on:
 jobs:
   publish:
     name: 🎉 Publish
+    environment: default
     runs-on: ubuntu-latest
     permissions:
       contents: read

@@ -1,5 +1,5 @@
 import '@larinonpm/components'
-import { BoundSelect, NumberField, SelectWrapper, TextField } from '@larinonpm/components'
+import { valid, invalid, BoundSelect, FormItem, NumberField, SelectWrapper, TextField } from '@larinonpm/components'
 
 interface OptionType {
     id: number
@@ -30,6 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
     clearOptionsBtn.onclick = () => boundSelect.clear()
 
     numberField.oninput = () => console.log('number-field:', numberField.value)
+
+
+    // form-item
+    const formItem = document.querySelector('#form-item') as FormItem
+    const formItemDebug = document.querySelector('#form-item-debug') as HTMLSpanElement
+
+    formItem.onvalidate = async (value: any, item: FormItem) => {
+        return defaultItemValidator(value, item)
+    }
+
+    formItem.onvalidated = async valid => {
+        formItemDebug.innerText = `Valid: ${valid}`
+    }
 })
 
 function createOptions(prefix: string) {
@@ -37,4 +50,11 @@ function createOptions(prefix: string) {
         id: i+1,
         name: `${prefix} ${i+1}`
     }))
+}
+
+async function defaultItemValidator(value: any, item: FormItem) {
+    console.log(item.required)
+    return (!item.required || value != null)
+        ? valid()
+        : invalid('Field is required!')
 }

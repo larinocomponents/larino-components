@@ -1,13 +1,22 @@
 import { LitElement } from 'lit'
 
-export interface TextField extends LitElement {
+declare interface ValidationResult {
+    valid: boolean,
+    message?: string
+}
+
+declare function valid(): ValidationResult
+
+declare function invalid(message: string): ValidationResult
+
+declare class TextField extends LitElement {
   type: string
   placeholder: string
   disabled: boolean
   value: string
 }
 
-export interface NumberField extends LitElement {
+declare class NumberField extends LitElement {
   min: string
   steps: string
   placeholder: string
@@ -15,13 +24,13 @@ export interface NumberField extends LitElement {
   value: string
 }
 
-export interface SelectWrapper extends LitElement {
+declare class SelectWrapper extends LitElement {
   placeholder: string
   value: string
   valueAsNumber: string
 }
 
-export interface BoundSelect<T> extends LitElement {
+declare class BoundSelect<T> extends LitElement {
   valueProp: string
   textProp: string
   placeholder: string
@@ -33,8 +42,22 @@ export interface BoundSelect<T> extends LitElement {
   clear(): void
 }
 
-export interface CheckboxWrapper extends LitElement {
+declare class CheckboxWrapper extends LitElement {
   value: boolean
+}
+
+declare class FormItem extends LitElement {
+  name: string
+  label: string
+  valuePropName: string
+  trigger: string
+  required: boolean
+  disabled: boolean
+  value: any
+  get valid(): boolean
+  set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>)
+  set onvalidated(callback: (valid: boolean) => Promise<void>)
+  reset(): void
 }
 
 declare global {
@@ -44,5 +67,6 @@ declare global {
     'select-wrapper': SelectWrapper
     'bound-select': BoundSelect<any>
     'checkbox-wrapper': CheckboxWrapper
+    'form-item': FormItem
   }
 }

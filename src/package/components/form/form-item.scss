@@ -1,0 +1,34 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .label {
+        display: none;
+        font-size: 14px;
+        font-weight: 500;
+        font-variation-settings: 'wght' 500;
+        color: rgb(25, 25, 25);
+        white-space: nowrap;
+
+        &::after {
+            color: #999;
+            content: ' (optional)';
+            font-weight: 400;
+            font-variation-settings: 'wght' 400;
+        }
+
+        &.visible {
+            display: block;
+        }
+    }
+}
+
+:host([required]) .label::after {
+    color: #f51f56;
+    content: ' *';
+}
+
+:host([no-label]) .label {
+    display: none;
+}

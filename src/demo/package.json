@@ -34,7 +34,6 @@
     "webpack-obfuscator": "^3.5.1"
   },
   "dependencies": {
-    "@larinonpm/components": "file:.yalc/@larinonpm/components",
     "lit": "^3.2.1"
   }
 }

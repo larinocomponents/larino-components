@@ -46,3 +46,37 @@
     </select-wrapper>
 </form-item>
 <span id="form-item-debug"></span>
+
+<bound-form id="bound-form">
+    <form-item
+        name="fullname"
+        trigger="input"
+        required>
+        <text-field placeholder="Fullname">
+        </text-field>
+    </form-item>
+    <form-item
+        name="gender"
+        label="Gender"
+        required>
+        <select-wrapper placeholder="Select Gender">
+            <select>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Others</option>
+            </select>
+        </select-wrapper>
+    </form-item>
+    <form-item
+        name="remarks"
+        trigger="input"
+        label="Remarks">
+        <text-field
+            placeholder="Enter Remarks here..."
+            max-lines="5">
+        </text-field>
+    </form-item>
+</bound-form>
+<button id="disable-bf-fname">Disable "Fullname" field</button>
+<button id="change-bf-gender">Change "Gender" to "Others"</button>
+<span id="bound-form-debug"></span>

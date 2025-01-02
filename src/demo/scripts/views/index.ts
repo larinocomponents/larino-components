@@ -1,9 +1,15 @@
 import '@larinonpm/components'
-import { valid, invalid, BoundSelect, FormItem, NumberField, SelectWrapper, TextField } from '@larinonpm/components'
+import { BoundForm, BoundSelect, FormItem, NumberField, SelectWrapper, TextField, defaultItemValidator } from '@larinonpm/components'
 
 interface OptionType {
     id: number
     name: string
+}
+
+interface Person {
+    name: string
+    gender: number
+    remarks?: string
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,6 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
     formItem.onvalidated = async valid => {
         formItemDebug.innerText = `Valid: ${valid}`
     }
+
+    // bound-form
+    const boundForm = document.querySelector('#bound-form') as BoundForm<Person>
+    const boundFormDebug = document.querySelector('#bound-form-debug') as HTMLSpanElement
+    const disabledBFBtn = document.querySelector('#disable-bf-fname') as HTMLButtonElement
+    const changeBFGender = document.querySelector('#change-bf-gender') as HTMLButtonElement
+
+    const debugBoundForm = () => {
+        boundFormDebug.innerText = `${JSON.stringify(boundForm.values)}\nValid: ${boundForm.valid}`
+    }
+
+    formItem.onchange = debugBoundForm.bind(this)
+    boundForm.onvalidate = async (value: any, item: FormItem) => {
+        return defaultItemValidator(value, item)
+    }
+    boundForm.onvalidated = debugBoundForm.bind(this)
+
+    disabledBFBtn.onclick = () => boundForm.setFieldStates({ fullname: false })
+    changeBFGender.onclick = () => boundForm.setFieldValues({ gender: 3 })
 })
 
 function createOptions(prefix: string) {
@@ -50,11 +75,4 @@ function createOptions(prefix: string) {
         id: i+1,
         name: `${prefix} ${i+1}`
     }))
-}
-
-async function defaultItemValidator(value: any, item: FormItem) {
-    console.log(item.required)
-    return (!item.required || value != null)
-        ? valid()
-        : invalid('Field is required!')
 }

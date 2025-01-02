@@ -9,6 +9,8 @@ declare function valid(): ValidationResult
 
 declare function invalid(message: string): ValidationResult
 
+declare function defaultItemValidator(value: any, item: FormItem): Promise<ValidationResult>
+
 declare class TextField extends LitElement {
   type: string
   placeholder: string
@@ -57,6 +59,19 @@ declare class FormItem extends LitElement {
   get valid(): boolean
   set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>)
   set onvalidated(callback: (valid: boolean) => Promise<void>)
+  reset(): void
+}
+
+declare class BoundForm<T> extends LitElement {
+  set initialValues(values: Partial<T>)
+  get values(): T
+  get valid(): boolean
+  set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>)
+  set onvalidated(callback: (valid: boolean) => Promise<void>)
+  setFieldValues(values: Partial<T>): void
+  setFieldValue(field: string, value: any): void
+  setFieldStates(states: {[field: string]: boolean}): void
+  setFieldState(field: string, state: boolean): void
   reset(): void
 }
 

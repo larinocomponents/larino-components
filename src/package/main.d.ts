@@ -1,5 +1,6 @@
 import { LitElement } from 'lit'
 
+// Form
 declare interface ValidationResult {
     valid: boolean,
     message?: string
@@ -75,6 +76,50 @@ declare class BoundForm<T> extends LitElement {
   reset(): void
 }
 
+// Data-grid
+declare type GridColumnValueMapper<T> = (raw: any, item: T, index: number) => any | HTMLElement
+
+declare type GridViewHorizontalAlignment = 'left' | 'center' | 'right'
+
+declare type GridViewVerticalAlignment = 'top' | 'middle' | 'bottom'
+
+declare type GridColumnRenderCallback = (column: DataGridCell) => void
+
+declare type RequestItemsCallback<T> = (top: number, skip: number) => Promise<RequestItemsResult<T>>
+
+declare interface RequestItemsResult<T> {
+    count: number
+    items: T[]
+}
+
+declare type InvokeCallback<T> = (item: T) => void
+
+declare interface GridColumnDefinition<T> {
+  navigation?: string
+  name?: string
+  width?: string
+  horizontalAlignment?: GridViewHorizontalAlignment,
+  verticalAlignment?: GridViewVerticalAlignment
+  map?: GridColumnValueMapper<T>
+  onRender?: GridColumnRenderCallback
+}
+
+declare class DataGrid<T> extends LitElement {
+  set columnDefinitions(value: GridColumnDefinition<T>[])
+  set onRequestItems(callback: RequestItemsCallback<T>)
+  set onInvoke(callback: InvokeCallback<T>)
+  refresh(): Promise<void>
+  reset(): void
+}
+
+declare class DataGridCell extends LitElement {}
+
+declare class PaginationStrip extends LitElement {
+  total: number
+  get lines(): number
+  get page(): number
+}
+
 declare global {
   interface HTMLElementTagNameMap {
     'text-field': TextField
@@ -83,5 +128,8 @@ declare global {
     'bound-select': BoundSelect<any>
     'checkbox-wrapper': CheckboxWrapper
     'form-item': FormItem
+    'data-grid': DataGrid<any>
+    'data-grid-cell': DataGridCell
+    'pagination-strip': PaginationStrip
   }
 }

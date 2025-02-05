@@ -130,7 +130,14 @@ export class DataGrid<T> extends LitElement {
             ? definition.map(value, item, index)
             : value
             
-        return html`<data-grid-cell>${content}</data-grid-cell>`
+        return html`
+            <data-grid-cell
+                spacing=${definition.spacing}
+                v-align=${definition.verticalAlignment}
+                h-align=${definition.horizontalAlignment}>
+                ${content}
+            </data-grid-cell>
+        `
     }
 
     private setInvokable() {

@@ -5,7 +5,7 @@ export interface GridColumnDefinition<T> {
     navigation?: string;
     horizontalAlignment?: GridColumnAlignment;
     verticalAlignment?: GridColumnAlignment;
-    spacing?: number;
+    spacing?: string;
     width?: string;
     map?: GridColumnMapper<T>;
 }

@@ -1,5 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const DtsBundleWebpack = require('dts-bundle-webpack')
 
 module.exports = (_, {mode}) => {
     const isDevelopment = mode === 'development'
@@ -23,6 +24,11 @@ module.exports = (_, {mode}) => {
             new MiniCssExtractPlugin({
                 filename : 'styles/[name].css'
             }),
+            new DtsBundleWebpack({
+                name: '@larinonpm/components',
+                main: 'main.d.ts',
+                out: 'build/main.d.ts',
+            })
         ],
         module: {
             rules: [

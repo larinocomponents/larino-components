@@ -1,5 +1,5 @@
 import '@larinonpm/components'
-import { BoundForm, BoundSelect, FormItem, NumberField, SelectWrapper, TextField, defaultItemValidator } from '@larinonpm/components'
+import { BoundForm, BoundSelect, DataGrid, FormItem, NumberField, SelectWrapper, TextField, defaultItemValidator } from '@larinonpm/components'
 
 interface OptionType {
     id: number
@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // form-item
     const formItem = document.querySelector('#form-item') as FormItem
     const formItemDebug = document.querySelector('#form-item-debug') as HTMLSpanElement
+
+    formItemDebug.onclick = () => {}
 
     formItem.onvalidate = async (value: any, item: FormItem) => {
         return defaultItemValidator(value, item)

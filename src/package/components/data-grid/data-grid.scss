@@ -1,0 +1,97 @@
+$border: solid 1px rgb(235, 235, 235);
+
+:host {
+    background-color: #fff;
+    border: $border;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: hidden;
+
+    .scroll-wrapper {
+        overflow: auto;
+        width: 100%;
+
+        .header {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .row {
+            display: grid;
+            flex-shrink: 0;
+            grid-template-columns: var(--widths);
+            height: 40px;
+            min-width: 100%;
+            transition: background-color 0.3s ease;
+            width: max-content;
+        }
+    
+        .row:not(:last-child) {
+            box-shadow: inset 0 -1px 0 0 rgb(235, 235, 235);
+        }
+
+        .row.header {
+            background-color: #f7f7f7;
+            box-shadow: inset 0 -1px 0 0 rgb(235, 235, 235);
+        }
+    
+        .content {
+            max-height: 100%;
+    
+            .row:hover {
+                background-color: #f7f7f7;
+            }
+        }
+
+        .empty {
+            $color: #666;
+            align-items: center;
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            height: 250px;
+            justify-content: center;
+            left: 0;
+            padding: 20px;
+            position: sticky;
+    
+            &.visible {
+                display: flex;
+            }
+    
+            .icon {
+                --size: 30px;
+                $size: var(--size);
+                fill: $color;
+                height: $size;
+                width: $size;
+            }
+    
+            .label {
+                color: $color;
+                font-size: 0.875em;
+                font-weight: 400;
+                font-variation-settings: 'wght' 400;
+                margin: 0;
+            }
+        }
+    }
+
+    .footer {
+        align-items: center;
+        box-shadow: inset 0 1px 0 0 rgb(235, 235, 235);
+        display: flex;
+        flex-shrink: 0;
+        height: 40px;
+        justify-content: flex-end;
+        padding: 0 12px;
+    }
+}
+
+:host(.invokable) .content ::slotted(.row) {
+    cursor: pointer;   
+}

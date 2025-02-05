@@ -1,82 +1,121 @@
-<text-field
-    id="text-field"
-    placeholder="Enter text here..."
-    max-lines="5">
-</text-field>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larino Components Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Gesit', Arial, sans-serif; }
+        .details-content { padding: 32px; }
+    </style>
+</head>
+<body>
+    <text-field
+        id="text-field"
+        placeholder="Enter text here..."
+        max-lines="5">
+    </text-field>
 
-<select-wrapper id="select-wrapper">
+    <select-wrapper id="select-wrapper">
     <select>
         <option value="1">Option 1</option>
         <option value="2">Option 2</option>
         <option value="3">Option 3</option>
         <option value="4">Option 4</option>
     </select>
-</select-wrapper>
+    </select-wrapper>
 
-<bound-select
+    <bound-select
     id="bound-select"
     value-prop="id"
     text-prop="name">
-</bound-select>
+    </bound-select>
 
-<button id="change-options">Change Options</button>
-<button id="clear-options">Clear Options</button>
+    <button id="change-options">Change Options</button>
+    <button id="clear-options">Clear Options</button>
 
-<number-field id="number-field"></number-field>
+    <number-field id="number-field"></number-field>
 
-<checkbox-wrapper>
-    <input type="checkbox">
-    <label>Option 1</label>
-</checkbox-wrapper>
-<checkbox-wrapper>
-    <label>Option 2</label>
-    <input type="checkbox">
-</checkbox-wrapper>
+    <details>
+        <summary>Checbox Wrapper</summary>
+        <div class="details-content">
+            <checkbox-wrapper>
+                <input type="checkbox">
+                <label>Option 1</label>
+            </checkbox-wrapper>
+            <checkbox-wrapper>
+                <label>Option 2</label>
+                <input type="checkbox">
+            </checkbox-wrapper>
+        </div>
+    </details>
 
-<form-item
-    id="form-item"
-    label="Gender"
-    required>
-    <select-wrapper placeholder="Select Gender">
-        <select>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-            <option value="2">Others</option>
-        </select>
-    </select-wrapper>
-</form-item>
-<span id="form-item-debug"></span>
+    <details>
+        <summary>Form Items</summary>
+        <div class="details-content">
+            <form-item
+                id="form-item"
+                label="Gender"
+                required>
+                <select-wrapper placeholder="Select Gender">
+                    <select>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        <option value="2">Others</option>
+                    </select>
+                </select-wrapper>
+            </form-item>
+            <span id="form-item-debug"></span>
+        </div>
+    </details>
 
-<bound-form id="bound-form">
-    <form-item
-        name="fullname"
-        trigger="input"
-        required>
-        <text-field placeholder="Fullname">
-        </text-field>
-    </form-item>
-    <form-item
-        name="gender"
-        label="Gender"
-        required>
-        <select-wrapper placeholder="Select Gender">
-            <select>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Others</option>
-            </select>
-        </select-wrapper>
-    </form-item>
-    <form-item
-        name="remarks"
-        trigger="input"
-        label="Remarks">
-        <text-field
-            placeholder="Enter Remarks here..."
-            max-lines="5">
-        </text-field>
-    </form-item>
-</bound-form>
-<button id="disable-bf-fname">Disable "Fullname" field</button>
-<button id="change-bf-gender">Change "Gender" to "Others"</button>
-<span id="bound-form-debug"></span>
+    <details>
+        <summary>Bound Form</summary>
+        <div class="details-content">
+            <bound-form id="bound-form">
+                <form-item
+                    name="fullname"
+                    trigger="input"
+                    required>
+                    <text-field placeholder="Fullname">
+                    </text-field>
+                </form-item>
+                <form-item
+                    name="gender"
+                    label="Gender"
+                    required>
+                    <select-wrapper placeholder="Select Gender">
+                        <select>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                            <option value="3">Others</option>
+                        </select>
+                    </select-wrapper>
+                </form-item>
+                <form-item
+                    name="remarks"
+                    trigger="input"
+                    label="Remarks">
+                    <text-field
+                        placeholder="Enter Remarks here..."
+                        max-lines="5">
+                    </text-field>
+                </form-item>
+            </bound-form>
+            <button id="disable-bf-fname">Disable "Fullname" field</button>
+            <button id="change-bf-gender">Change "Gender" to "Others"</button>
+            <span id="bound-form-debug"></span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Pagination Strip</summary>
+        <div class="details-content">
+            <pagination-strip total="1000"></pagination-strip>
+        </div>
+    </details>
+</body>
+</html>

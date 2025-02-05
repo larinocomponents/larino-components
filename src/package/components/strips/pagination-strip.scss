@@ -1,0 +1,83 @@
+:host {
+    display: flex;
+    gap: 8px;
+}
+
+.blocks {
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding: 4px 8px;
+
+    &:hover:not(.page) {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+}
+
+.lines {
+    color: rgb(104, 104, 104);
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 0.875em;
+    position: relative;
+
+    .value {
+        color: rgb(25, 25, 25);
+    }
+
+    select {
+        appearance: none;
+        opacity: 0;
+        position: absolute;
+        inset: 0;
+    }
+
+    svg {
+        $size: 14px;
+        fill: rgb(104, 104, 104);
+        flex-shrink: 0;
+        height: $size;
+        width: $size;          
+    }
+}
+
+.page {
+    color: rgb(104, 104, 104);
+    font-size: 0.875em;
+
+    .value {
+        color: rgb(25, 25, 25);
+    }
+}
+
+.nav-button {
+    $size: 26px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    fill: rgb(25, 25, 25);
+    font-family: 'Geist', sans-serif;
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-size: 0.875em;
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+    height: $size;
+    width: $size;
+
+    &[disabled] {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    svg {
+        $size: 12px;
+        flex-shrink: 0;
+        height: $size;
+        width: $size;
+    }
+}

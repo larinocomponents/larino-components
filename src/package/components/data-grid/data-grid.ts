@@ -36,6 +36,15 @@ export class DataGrid<T> extends LitElement {
     @property({ type: Array, attribute: false })
     public definitions: GridColumnDefinition<T>[] = []
 
+    public set onRequestItems(callback: RequestItemsCallback<T>) {
+        this._onRequestItems = callback
+    }
+
+    public set onInvoke(callback: InvokeCallback<T>) {
+        this._onInvoke = callback
+        this.setInvokable()
+    }
+
     public render() {
         return html`
             <div class="scroll-wrapper">
@@ -74,17 +83,8 @@ export class DataGrid<T> extends LitElement {
         this._items = items
     }
 
-    public onRequestItems(callback: RequestItemsCallback<T>) {
-        this._onRequestItems = callback
-    }
-
-    public onInvoke(callback: InvokeCallback<T>) {
-        this._onInvoke = callback
-        this.setInvokable()
-    }
-
     protected override updated(changes: PropertyValues): void {
-        if (changes.has('_definitions'))
+        if (changes.has('definitions'))
             this.updateWidths()
     }
 

@@ -85,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //     count: 0,
     //     items: []
     // })
-    dg1.columnDefinitions = [
+    dg1.definitions = [
         {
             name: 'Column 1',
             navigation: 'prop1',
-            horizontalAlignment: 'right',
+            horizontalAlignment: 'end',
             width: '300px'
         },
         {

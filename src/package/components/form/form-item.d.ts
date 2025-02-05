@@ -19,8 +19,8 @@ export declare class FormItem extends LitElement {
     set value(value: any);
     get valid(): boolean;
     render(): import("lit").TemplateResult<1>;
-    onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>): void;
-    onvalidated(callback: (valid: boolean) => Promise<void>): void;
+    set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>);
+    set onvalidated(callback: (valid: boolean) => Promise<void>);
     firstUpdated(): void;
     updated(changes: PropertyValues): void;
     reset(): void;

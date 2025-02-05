@@ -62,12 +62,12 @@ export class FormItem extends LitElement {
         `
     }
 
-    public onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>) {
+    public set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>) {
         this._onvalidate = callback
         this.validate() // TODO: Revisit. Right now this is a temporary fix.
     }
 
-    public onvalidated(callback: (valid: boolean) => Promise<void>) {
+    public set onvalidated(callback: (valid: boolean) => Promise<void>) {
         this._onvalidated = callback
     }
     

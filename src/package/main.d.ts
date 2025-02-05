@@ -1,2 +1,2 @@
-export * from './components/index.d'
-export * from './utilities/validation-result.d'
+export * from './components';
+export * from './utilities/validation-result';

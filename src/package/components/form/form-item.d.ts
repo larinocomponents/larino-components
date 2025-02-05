@@ -1,0 +1,33 @@
+import { ValidationResult } from '@/utilities';
+import { LitElement, PropertyValues } from 'lit';
+export declare class FormItem extends LitElement {
+    static styles: import("lit").CSSResult;
+    private _control;
+    private _initialValue;
+    private _value;
+    private _onvalidate?;
+    private _valid;
+    private _onvalidated?;
+    name: string;
+    label?: string;
+    valuePropName: string;
+    trigger: string;
+    required: boolean;
+    disabled: boolean;
+    set initialValue(value: any);
+    get value(): any;
+    set value(value: any);
+    get valid(): boolean;
+    render(): import("lit").TemplateResult<1>;
+    onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>): void;
+    onvalidated(callback: (valid: boolean) => Promise<void>): void;
+    firstUpdated(): void;
+    updated(changes: PropertyValues): void;
+    reset(): void;
+    private attachControl;
+    private attachEventListener;
+    private onTrigger;
+    private resolveValue;
+    private setControlValue;
+    private validate;
+}

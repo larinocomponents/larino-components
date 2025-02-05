@@ -51,15 +51,6 @@ export class FormItem extends LitElement {
         return this._valid
     }
 
-    public set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>) {
-        this._onvalidate = callback
-        this.validate() // TODO: Revisit. Right now this is a temporary fix.
-    }
-
-    public set onvalidated(callback: (valid: boolean) => Promise<void>) {
-        this._onvalidated = callback
-    }
-
     public render() {
         return html`
             <span class="label ${!isNullOrEmpty(this.label) && 'visible'}">
@@ -69,6 +60,15 @@ export class FormItem extends LitElement {
                 <slot></slot>
             </div>
         `
+    }
+
+    public onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>) {
+        this._onvalidate = callback
+        this.validate() // TODO: Revisit. Right now this is a temporary fix.
+    }
+
+    public onvalidated(callback: (valid: boolean) => Promise<void>) {
+        this._onvalidated = callback
     }
     
     public firstUpdated() {

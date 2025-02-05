@@ -1,6 +1,6 @@
-type GridColumnMapper<T> = (raw: any, item: T, index: number) => any | HTMLElement
-
 type GridColumnAlignment = 'start' | 'center' | 'end'
+
+type GridColumnMapper<T> = (raw: any, item: T, index: number) => any | HTMLElement
 
 export interface GridColumnDefinition<T> {
     name?: string

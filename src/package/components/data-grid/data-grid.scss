@@ -20,8 +20,7 @@ $border: solid 1px rgb(235, 235, 235);
             z-index: 1;
         }
 
-        .row,
-        ::slotted(.row) {
+        .row {
             display: grid;
             flex-shrink: 0;
             grid-template-columns: var(--widths);
@@ -31,7 +30,7 @@ $border: solid 1px rgb(235, 235, 235);
             width: max-content;
         }
     
-        ::slotted(.row:not(:last-child)) {
+        .row:not(:last-child) {
             box-shadow: inset 0 -1px 0 0 rgb(235, 235, 235);
         }
 
@@ -43,7 +42,7 @@ $border: solid 1px rgb(235, 235, 235);
         .content {
             max-height: 100%;
     
-            ::slotted(.row:hover) {
+            .row:hover {
                 background-color: #f7f7f7;
             }
         }

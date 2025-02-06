@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modal Dialog</title>
+    <style>
+        :root {
+            --accent-color: #007bff;
+        }
+    </style>
 </head>
 <body>
     <button id="show-modal-button">Show Modal</button>
     <modal-dialog width="250" height="250">
         <p>Hello World!</p>
     </modal-dialog>
+
+    <button id="show-loading">Show Loading</button>
+    <button id="show-success">Show Success</button>
+    <button id="show-error">Show Error</button>
+    <status-strip></status-strip>
+
+    <progress-spinner size="16"></progress-spinner>
 </body>
 </html>

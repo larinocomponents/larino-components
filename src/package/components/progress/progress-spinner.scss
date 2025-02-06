@@ -1,0 +1,30 @@
+:host {
+    --color: var(--accent-color);
+    display: block;
+}
+
+.control {
+    $color: var(--color);
+
+    animation: loading-animation 1s linear infinite;
+    fill: none;
+    shape-rendering: geometricprecision;
+
+    circle {
+        stroke: color-mix(in srgb, $color 25%, transparent);
+    }
+
+    path {
+        stroke: $color;
+    }
+}
+
+@keyframes loading-animation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

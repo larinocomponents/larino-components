@@ -26,7 +26,6 @@ export class ProgressSpinner extends LitElement {
         return html`
             <svg
                 class="control"
-                style="width:${this.size}px;height:${this.size}px"
                 viewBox="0 0 ${this.size} ${this.size}">
                 <circle
                     stroke-width="2"
@@ -41,13 +40,18 @@ export class ProgressSpinner extends LitElement {
 
     protected override updated(changes: Map<string, any>): void {
         if (changes.has('size'))
-            this.setSize()
+            this.updateSize()
 
         if (changes.has('color'))
             this.style.setProperty('--color', this.color)
     }
 
-    private setSize() {
+    private updateSize() {
+        // Fixed size
+        this.style.width = this.size + 'px'
+        this.style.height = this.size + 'px'
+
+        // Spinner
         const d = this.size - 1
         this._c = this.size / 2
         this._r = this._c - 1

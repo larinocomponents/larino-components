@@ -7,20 +7,18 @@ import { GridColumnAlignment } from '@/components/data-grid/grid-column-definiti
 export class DataGridCell extends LitElement {
     static styles = css`
         :host {
-            --spacing: 11px 12px;
-            --v-align: center;
-            --h-align: start;
+            align-items: center;
+            display: flex;
+            justify-content: start;
+            padding: 11px 12px;
         }
 
         .control {
-            align-items: var(--v-align);
             color: rgb(25, 25, 25);
-            display: flex;
+            display: block;
             font-size: 0.937em;
-            justify-content: var(--h-align);
             line-height: 18px;
             overflow: hidden;
-            padding: var(--spacing);
             text-overflow: ellipsis;
             white-space: nowrap;
         }
@@ -45,12 +43,12 @@ export class DataGridCell extends LitElement {
 
     protected updated(changes: PropertyValues): void {
         if (changes.has('spacing'))
-            this.style.setProperty('--spacing', this.spacing)
+            this.style.padding = this.spacing
 
         if (changes.has('verticalAlignment'))
-            this.style.setProperty('--v-align', this.verticalAlignment)
+            this.style.alignItems = this.verticalAlignment
 
         if (changes.has('horizontalAlignment'))
-            this.style.setProperty('--h-align', this.horizontalAlignment)
+            this.style.justifyContent = this.horizontalAlignment
     }
 }

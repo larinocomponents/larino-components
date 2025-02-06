@@ -1,3 +1,4 @@
-export * from './form';
 export * from './data-grid';
-export { PaginationStrip } from './strips/pagination-strip';
+export * from './dialogs';
+export * from './form';
+export * from './strips';

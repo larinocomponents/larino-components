@@ -1,0 +1,59 @@
+:host {
+    overflow: hidden;
+
+    .control {
+        $font-weight: 400;
+        align-items: center;
+        display: none;
+        gap: 6px;
+        opacity: 0;
+
+        &:not(.iddle),
+        &.loading .load,
+        &.error .error,
+        &.success .success {
+            display: flex !important;
+            opacity: 1 !important;
+        }
+    
+        .indicators {
+            $size: 16px;
+            display: grid;
+            flex-shrink: 0;
+            height: $size;
+            width: $size;
+    
+            .indicator {
+                align-items: center;
+                display: none;
+                height: $size;
+                justify-content: center;
+                opacity: 0;
+                grid-area: 1 / 1;
+                width: $size;
+    
+                &.error svg {
+                    fill: #c32e26;
+                }
+    
+                &.success svg {
+                    fill: #008f2a;
+                }
+            }
+        }
+    
+        .message {
+            color: #808080;
+            font-size: 0.875em;
+            font-weight: $font-weight;
+            font-variation-settings: 'wght' $font-weight;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &.error .message {
+            color: #c32e26; 
+        }
+    }
+}

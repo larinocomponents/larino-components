@@ -1,13 +1,15 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const DtsBundleWebpack = require('dts-bundle-webpack')
+const NpmDtsPlugin = require('npm-dts-webpack-plugin')
 
 module.exports = (_, {mode}) => {
     const isDevelopment = mode === 'development'
 
     return {
         target: 'web',
-        entry: './main.ts',
+        entry: {
+            index: './index.ts'
+        },
         output: {
             path: path.resolve(__dirname, 'build'),
             filename: '[name].js',
@@ -24,11 +26,7 @@ module.exports = (_, {mode}) => {
             new MiniCssExtractPlugin({
                 filename : 'styles/[name].css'
             }),
-            new DtsBundleWebpack({
-                name: '@larinonpm/components',
-                main: 'main.d.ts',
-                out: 'build/main.d.ts',
-            })
+            new NpmDtsPlugin()
         ],
         module: {
             rules: [
@@ -40,10 +38,7 @@ module.exports = (_, {mode}) => {
                 {
                     test: /\.s[ac]ss$/,
                     use: [
-                        {
-                            loader: 'lit-scss-loader',
-                            options: { minify: !isDevelopment }
-                        },
+                        'css-loader',
                         {
                             loader: 'sass-loader',
                             options: {

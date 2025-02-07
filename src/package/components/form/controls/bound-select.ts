@@ -1,10 +1,11 @@
-import { html, LitElement, PropertyValues } from 'lit'
-import { customElement, property, query, state } from 'lit/decorators.js'
+import { html, unsafeCSS, LitElement, PropertyValues } from 'lit'
+import { property, query, state } from 'lit/decorators.js'
+import { customComponent } from '@/decorators/custom-component'
 import styles from './select-wrapper.scss'
 
-@customElement('bound-select')
+@customComponent('bound-select')
 export class BoundSelect<T> extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _value: string
 

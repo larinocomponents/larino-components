@@ -1,6 +1,6 @@
 import '@/components/progress/progress-spinner'
 
-import { html, LitElement } from 'lit'
+import { html, unsafeCSS, LitElement } from 'lit'
 import { state } from 'lit/decorators.js'
 import { customComponent } from '@/decorators/custom-component'
 import styles from './status-strip.scss'
@@ -9,7 +9,7 @@ export type StatusTypes = 'idle' | 'loading' | 'error' | 'success'
 
 @customComponent('status-strip')
 export class StatusStrip extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _dismissTimeout: number
 

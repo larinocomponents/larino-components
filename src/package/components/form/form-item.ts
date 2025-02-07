@@ -1,11 +1,12 @@
+import { html, unsafeCSS, LitElement, PropertyValues } from 'lit'
+import { property } from 'lit/decorators.js'
+import { customComponent } from '@/decorators/custom-component'
 import { isNullOrEmpty, ValidationResult } from '@/utilities'
-import { html, LitElement, PropertyValues } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
 import styles from './form-item.scss'
     
-@customElement('form-item')
+@customComponent('form-item')
 export class FormItem extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _control: HTMLElement
     private _initialValue: any

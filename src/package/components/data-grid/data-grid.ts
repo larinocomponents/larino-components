@@ -1,4 +1,4 @@
-import { html, LitElement, PropertyValues } from 'lit'
+import { html, unsafeCSS, LitElement, PropertyValues } from 'lit'
 import { property, query, state } from 'lit/decorators.js'
 import { repeat } from 'lit/directives/repeat.js'
 import { customComponent } from '@/decorators/custom-component'
@@ -18,7 +18,7 @@ export interface RequestItemsResult<T> {
 
 @customComponent('data-grid')
 export class DataGrid<T> extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _onRequestItems?: RequestItemsCallback<T>
     private _invokable: boolean = false

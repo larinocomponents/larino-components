@@ -22,6 +22,13 @@ export class ProgressSpinner extends LitElement {
     @property()
     public color: string
 
+    constructor() {
+        super()
+        
+        // Will populate values for default 24px spinner...
+        this.updateSize()
+    }
+
     public render() {
         return html`
             <svg

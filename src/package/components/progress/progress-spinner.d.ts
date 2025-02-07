@@ -6,7 +6,9 @@ export declare class ProgressSpinner extends LitElement {
     private _r;
     size: number;
     color: string;
+    constructor();
     render(): import("lit").TemplateResult<1>;
+    protected firstUpdated(): void;
     protected updated(changes: Map<string, any>): void;
-    private setSize;
+    private updateSize;
 }

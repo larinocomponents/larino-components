@@ -1,11 +1,11 @@
-import { html, LitElement, PropertyValues } from 'lit'
+import { html, unsafeCSS, LitElement, PropertyValues } from 'lit'
 import { property, state } from 'lit/decorators.js'
 import { customComponent } from '@/decorators/custom-component'
 import styles from './pagination-strip.scss'
 
 @customComponent('pagination-strip')
 export class PaginationStrip extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _maxPage: number = 1
     private _eventQueue: number

@@ -1,11 +1,11 @@
-import { html, LitElement } from 'lit'
+import { html, unsafeCSS, LitElement } from 'lit'
 import { query, property } from 'lit/decorators.js'
 import { customComponent } from '@/decorators/custom-component'
 import styles from './modal-dialog.scss'
 
 @customComponent('modal-dialog')
 export class ModalDialog extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     @query('.control')
     private _control: HTMLDialogElement

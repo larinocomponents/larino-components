@@ -1,5 +1,5 @@
-import { ValidationResult } from '@/utilities';
 import { LitElement, PropertyValues } from 'lit';
+import { ValidationResult } from '@/utilities';
 export declare class FormItem extends LitElement {
     static styles: import("lit").CSSResult;
     private _control;

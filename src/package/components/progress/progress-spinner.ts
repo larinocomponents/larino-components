@@ -1,11 +1,11 @@
-import { html, LitElement } from 'lit'
+import { html, unsafeCSS, LitElement } from 'lit'
 import { property, state } from 'lit/decorators.js'
 import { customComponent } from '@/decorators/custom-component'
 import styles from './progress-spinner.scss'
 
 @customComponent('progress-spinner')
 export class ProgressSpinner extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     @state()
     private _path: string

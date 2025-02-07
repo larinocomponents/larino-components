@@ -1,10 +1,11 @@
-import { html, LitElement, render } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
+import { html, unsafeCSS, LitElement, render } from 'lit'
+import { property, state } from 'lit/decorators.js'
+import { customComponent } from '@/decorators'
 import styles from './select-wrapper.scss'
 
-@customElement('select-wrapper')
+@customComponent('select-wrapper')
 export class SelectWrapper extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _value: string
     private _control: HTMLSelectElement

@@ -1,10 +1,11 @@
-import { html, LitElement } from 'lit'
-import { customElement, state } from 'lit/decorators.js'
+import { html, unsafeCSS, LitElement } from 'lit'
+import { state } from 'lit/decorators.js'
+import { customComponent } from '@/decorators'
 import styles from './checkbox-wrapper.scss'
 
-@customElement('checkbox-wrapper')
+@customComponent('checkbox-wrapper')
 export class CheckboxWrapper extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _control: HTMLInputElement
 

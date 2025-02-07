@@ -1,23 +1,17 @@
-import { isNullOrWhitespace } from '@/utilities'
 import { html, unsafeCSS, LitElement, nothing } from 'lit'
+import { customComponent } from '@/decorators/custom-component'
+import { isNullOrWhitespace } from '@/utilities'
 import { property, query } from 'lit/decorators.js'
-import { customComponent } from '@/decorators'
 import styles from './text-field.scss'
 
-@customComponent('number-field')
-export class NumberField extends LitElement {
+@customComponent('date-field')
+export class DateField extends LitElement {
     static styles = unsafeCSS(styles)
 
-    private _value: number 
+    private _value: string
     
     @query('.control')
     private _control: HTMLInputElement
-
-    @property()
-    public min: string
-
-    @property()
-    public steps: string
 
     @property()
     public placeholder: string
@@ -29,18 +23,16 @@ export class NumberField extends LitElement {
         return this._value
     }
 
-    public set value(value: number) {
-        this._value = value
-        this._control.value = value?.toString() ?? ''
+    public set value(value: string) {
+        this._value = value ?? null
+        this._control.value = value ?? ''
     }
 
     public render() {
         return html`
             <input
+                type="date"
                 class="control"
-                type="number"
-                min="${this.min ?? nothing}"
-                steps="${this.steps ?? nothing}"
                 placeholder="${this.placeholder ?? nothing}"
                 ?disabled=${this.disabled}
                 @input=${this.onInput}
@@ -51,7 +43,7 @@ export class NumberField extends LitElement {
     private onInput(e: Event) {
         e.stopPropagation()
         const value = this._control.value
-        this._value = !isNullOrWhitespace(value) ? Number(value) : undefined
+        this._value = !isNullOrWhitespace(value) ? value : null
         this.dispatchEvent(new CustomEvent('input'))
     }
 }

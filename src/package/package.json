@@ -2,10 +2,11 @@
   "name": "@larinonpm/components",
   "version": "0.1.0",
   "description": "Custom web components.",
-  "main": "build/main.js",
-  "types": "build/main.d.ts",
+  "main": "build/index.js",
+  "types": "index.d.ts",
   "files": [
-    "build"
+    "build",
+    "index.d.ts"
   ],
   "scripts": {
     "build:dev": "webpack --mode=development",
@@ -28,10 +29,8 @@
   "homepage": "https://github.com/larinocomponents/larino-components#readme",
   "devDependencies": {
     "css-loader": "^6.8.1",
-    "dts-bundle": "^0.7.3",
-    "dts-bundle-webpack": "^1.0.2",
-    "lit-scss-loader": "^2.0.1",
     "mini-css-extract-plugin": "^2.7.6",
+    "npm-dts-webpack-plugin": "^1.3.13",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "ts-loader": "^9.5.0",

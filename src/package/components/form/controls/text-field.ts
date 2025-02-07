@@ -1,19 +1,17 @@
-import { html, LitElement, nothing } from 'lit'
-import { customElement, property, query } from 'lit/decorators.js'
+import { html, unsafeCSS, LitElement, nothing } from 'lit'
+import { property, query } from 'lit/decorators.js'
 import { isNullOrWhitespace } from '@/utilities'
+import { customComponent } from '@/decorators'
 import styles from './text-field.scss'
 
-@customElement('text-field')
+@customComponent('text-field')
 export class TextField extends LitElement {
-    static styles = styles
+    static styles = unsafeCSS(styles)
 
     private _value: string
     
     @query('.control')
     private _control: HTMLTextAreaElement
-
-    @property()
-    public type: string = 'text'
 
     @property()
     public placeholder: string
@@ -40,7 +38,6 @@ export class TextField extends LitElement {
         return html`
             <textarea
                 class="control"
-                type="${this.type}"
                 placeholder="${this.placeholder ?? nothing}"
                 pattern="${this.pattern ?? nothing}"
                 ?disabled="${this.disabled}"

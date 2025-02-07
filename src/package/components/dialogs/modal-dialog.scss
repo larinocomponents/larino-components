@@ -33,21 +33,14 @@
     }
 
     &[open] {
+        animation: open-modal-transition 0.3s $easing;
         display: flex;
         opacity: 1;
         transform: scale(1);
-        
-        @starting-style {
-            opacity: 0;
-            transform: scale(0.8);
-        }
 
         &::backdrop {
+            animation: open-modal-backdrop-transition 0.3s;
             background-color: rgba(0, 0, 0, 0.25);
-
-            @starting-style {
-                background-color: rgb(0 0 0 / 0%);
-            }
         }
     }
 
@@ -86,5 +79,30 @@
         &:active {
             background-color: rgba(0, 0, 0, 0.15);
         }
+    }
+}
+
+// See: https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style
+// Once @starting-style is supported in all major browsers, the following keyframes can be removed.
+
+@keyframes open-modal-transition {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes open-modal-backdrop-transition {
+    from {
+        background-color: rgb(0 0 0 / 0%);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.25);
     }
 }

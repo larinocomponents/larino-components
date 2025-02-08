@@ -73,23 +73,50 @@ declare module '@larinonpm/components/components/data-grid/index' {
   export * from '@larinonpm/components/components/data-grid/data-grid';
 
 }
+declare module '@larinonpm/components/components/dialogs/base-dialog' {
+  import { LitElement, CSSResultGroup, TemplateResult } from 'lit';
+  export abstract class BaseDialog extends LitElement {
+      static styles: CSSResultGroup;
+      private _dialog;
+      width?: string;
+      height?: string;
+      render(): TemplateResult<1>;
+      show(): Promise<void>;
+      close(): void;
+      protected abstract renderContent(): TemplateResult;
+      protected dismissed(): void;
+      protected closed(): void;
+      private dismiss;
+      private resolveSize;
+  }
+
+}
+declare module '@larinonpm/components/components/dialogs/confirm-dialog' {
+  import { BaseDialog } from '@larinonpm/components/components/dialogs/base-dialog';
+  export class ConfirmDialog extends BaseDialog {
+      static styles: import("lit").CSSResultGroup[];
+      private _response?;
+      title: string;
+      message: string;
+      private critical;
+      renderContent(): import("lit-html").TemplateResult<1>;
+      static show(title: string, message: string, critical?: boolean): Promise<string>;
+      protected dismissed(): void;
+      protected closed(): void;
+      private respond;
+  }
+
+}
 declare module '@larinonpm/components/components/dialogs/index' {
   export * from '@larinonpm/components/components/dialogs/modal-dialog';
+  export * from '@larinonpm/components/components/dialogs/confirm-dialog';
 
 }
 declare module '@larinonpm/components/components/dialogs/modal-dialog' {
-  import { LitElement } from 'lit';
-  export class ModalDialog extends LitElement {
-      static styles: import("lit").CSSResult;
-      private _control;
-      width: number;
-      height: number;
-      render(): import("lit-html").TemplateResult<1>;
-      show(): void;
-      close(): void;
-      protected updated(changes: Map<string, any>): void;
-      private setSize;
-      private notifyClosed;
+  import { BaseDialog } from '@larinonpm/components/components/dialogs/base-dialog';
+  export class ModalDialog extends BaseDialog {
+      static styles: import("lit").CSSResultGroup[];
+      renderContent(): import("lit-html").TemplateResult<1>;
   }
 
 }
@@ -384,6 +411,14 @@ declare module '@larinonpm/components/index' {
   export * from '@larinonpm/components/utilities/validation-result';
 
 }
+declare module '@larinonpm/components/utilities/confirm-dialog-factory' {
+  import { ConfirmDialog } from '@/components';
+  export class ConfirmDialogFactory {
+      private static _instances;
+      static createOrSelect(key: string): ConfirmDialog;
+  }
+
+}
 declare module '@larinonpm/components/utilities/form-item-collection' {
   import { FormItem } from '@/components';
   export class FormItemCollection {
@@ -424,6 +459,7 @@ declare module '@larinonpm/components/utilities/form-item-collection' {
 
 }
 declare module '@larinonpm/components/utilities/index' {
+  export * from '@larinonpm/components/utilities/confirm-dialog-factory';
   export * from '@larinonpm/components/utilities/string-utilities';
   export * from '@larinonpm/components/utilities/validation-result';
   export * from '@larinonpm/components/utilities/form-item-collection';
@@ -432,6 +468,7 @@ declare module '@larinonpm/components/utilities/index' {
 declare module '@larinonpm/components/utilities/string-utilities' {
   export const isNullOrEmpty: (value: string) => boolean;
   export const isNullOrWhitespace: (value: string) => boolean;
+  export const isNumber: (v: string) => boolean;
 
 }
 declare module '@larinonpm/components/utilities/validation-result' {

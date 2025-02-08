@@ -1,6 +1,6 @@
 import '@larinonpm/components'
 
-import { ModalDialog, StatusStrip } from '@larinonpm/components'
+import { ConfirmDialog, ModalDialog, StatusStrip } from '@larinonpm/components'
 
 document.addEventListener('DOMContentLoaded', () => {
     const dialog = document.querySelector('modal-dialog') as ModalDialog
@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showModalBtn.onclick = () => dialog.show()
     dialog.onclose = () => console.log('Dialog closed')
+
+    const showConfirmBtn = document.querySelector('#show-confirm-button') as HTMLButtonElement
+    showConfirmBtn.onclick = async () => {
+        const response = await ConfirmDialog.show('Delete this user?', 'The user will be removed from the system.\nThis action cannot be undone.')
+        console.log(response)
+    }
 
     // Status Strip
     const statusStrip = document.querySelector('status-strip') as StatusStrip

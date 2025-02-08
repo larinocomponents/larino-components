@@ -1,0 +1,65 @@
+dialog {
+    $min-size: 100px;
+    $easing: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 0 1px rgb(0 0 0 / 60%);
+    min-height: $min-size;
+    min-width: $min-size;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    transform: scale(0.8);
+    transition:
+        transform 0.3s $easing,
+        opacity 0.3s $easing,
+        overlay 0.3s linear allow-discrete,
+        display 0.3s linear allow-discrete;
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0);
+        transition:
+            overlay 0.3s linear allow-discrete,
+            display 0.3s linear allow-discrete,
+            background-color 0.3s;
+    }
+
+    &[open] {
+        animation: open-modal-transition 0.3s $easing;
+        display: flex;
+        opacity: 1;
+        transform: scale(1);
+
+        &::backdrop {
+            animation: open-modal-backdrop-transition 0.3s;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+    }
+}
+
+// See: https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style
+// Once @starting-style is supported in all major browsers, the following keyframes can be removed.
+
+@keyframes open-modal-transition {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes open-modal-backdrop-transition {
+    from {
+        background-color: rgb(0 0 0 / 0%);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+}

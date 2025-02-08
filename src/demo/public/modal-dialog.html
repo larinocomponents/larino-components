@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modal Dialog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent-color: #007bff;
+            font-family: 'Geist', Arial, sans-serif;
         }
     </style>
 </head>
 <body>
+    <!-- Modal Dialog -->
     <button id="show-modal-button">Show Modal</button>
     <modal-dialog width="250" height="250">
         <p>Hello World!</p>
     </modal-dialog>
-
+    
+    <!-- Confirm Dialog -->
+    <button id="show-confirm-button">Show Confirm</button>
+    
     <button id="show-loading">Show Loading</button>
     <button id="show-success">Show Success</button>
     <button id="show-error">Show Error</button>

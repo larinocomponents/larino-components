@@ -1,4 +1,4 @@
-import { html, unsafeCSS, LitElement, PropertyValues, render } from 'lit'
+import { html, unsafeCSS, LitElement, PropertyValues, render, nothing } from 'lit'
 import { property, query, state } from 'lit/decorators.js'
 import { repeat } from 'lit/directives/repeat.js'
 import { customComponent } from '@/decorators/custom-component'
@@ -130,9 +130,9 @@ export class DataGrid<T> extends LitElement {
             
         return html`
             <data-grid-cell
-                spacing=${definition.spacing}
-                v-align=${definition.verticalAlignment}
-                h-align=${definition.horizontalAlignment}>
+                spacing=${definition.spacing ?? nothing}
+                v-align=${definition.verticalAlignment ?? nothing}
+                h-align=${definition.horizontalAlignment ?? nothing}>
                 ${content}
             </data-grid-cell>
         `

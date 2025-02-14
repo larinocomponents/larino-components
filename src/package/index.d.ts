@@ -1,5 +1,5 @@
 declare module '@larinonpm/components/components/data-grid/data-grid-cell' {
-  import { LitElement, PropertyValues } from 'lit';
+  import { LitElement } from 'lit';
   import { GridColumnAlignment } from '@/components/data-grid/grid-column-definition';
   export class DataGridCell extends LitElement {
       static styles: import("lit").CSSResult;
@@ -7,7 +7,7 @@ declare module '@larinonpm/components/components/data-grid/data-grid-cell' {
       verticalAlignment: GridColumnAlignment;
       horizontalAlignment: GridColumnAlignment;
       render(): import("lit-html").TemplateResult<1>;
-      protected updated(changes: PropertyValues): void;
+      private getControlStyle;
   }
 
 }

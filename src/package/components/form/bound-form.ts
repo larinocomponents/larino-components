@@ -83,6 +83,11 @@ export class BoundForm<T> extends LitElement {
         if (item) item.toggleAttribute('disabled', !state)
     }
 
+    public setFieldVisibility(field: string, visible: boolean) {
+        const item = this._items.get(field)
+        if (item) item.hidden = !visible
+    }
+
     public reset() {
         this._initialValues = {}
         this._values = {} as T

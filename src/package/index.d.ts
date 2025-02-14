@@ -34,7 +34,6 @@ declare module '@larinonpm/components/components/data-grid/data-grid' {
       private _invokable;
       private _onInvoke;
       private _count;
-      private _items;
       private _pagination;
       definitions: GridColumnDefinition<T>[];
       set onRequestItems(callback: RequestItemsCallback<T>);

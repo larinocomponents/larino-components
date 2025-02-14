@@ -1,4 +1,4 @@
-import { html, unsafeCSS, LitElement, PropertyValues } from 'lit'
+import { html, unsafeCSS, LitElement, PropertyValues, render } from 'lit'
 import { property, query, state } from 'lit/decorators.js'
 import { repeat } from 'lit/directives/repeat.js'
 import { customComponent } from '@/decorators/custom-component'
@@ -27,9 +27,6 @@ export class DataGrid<T> extends LitElement {
     @state()
     private _count: number = 0
 
-    @state()
-    private _items: T[] = []
-
     @query('.pagination')
     private _pagination: PaginationStrip
 
@@ -52,7 +49,7 @@ export class DataGrid<T> extends LitElement {
                     ${this.renderHeader()}
                 </div>
                 <div class="content">
-                    ${this.renderItems()}
+                    <slot></slot>
                 </div>
                 <div class="empty ${this._count == 0 ? 'visible' : ''}">
                     <svg class="icon" width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +77,7 @@ export class DataGrid<T> extends LitElement {
         const {count, items} = await this._onRequestItems(top, skip)
         
         this._count = count
-        this._items = items
+        this.renderItems(items)
     }
 
     protected override updated(changes: PropertyValues): void {
@@ -101,8 +98,9 @@ export class DataGrid<T> extends LitElement {
         this.style.setProperty('--widths', widths)
     }
 
-    private renderItems() {
-        return repeat(this._items, i => i, this.renderRow.bind(this))
+    private renderItems(items: T[]) {
+        const rows = repeat(items, i => i, this.renderRow.bind(this))
+        render(rows, this)
     }
 
     private renderRow(item: T) {

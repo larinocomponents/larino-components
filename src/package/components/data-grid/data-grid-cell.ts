@@ -6,6 +6,10 @@ import { GridColumnAlignment } from '@/components/data-grid/grid-column-definiti
 @customComponent('data-grid-cell')
 export class DataGridCell extends LitElement {
     static styles = css`
+        :host {
+            display: flex;
+        }
+
         .control {
             align-items: center;
             color: rgb(25, 25, 25);

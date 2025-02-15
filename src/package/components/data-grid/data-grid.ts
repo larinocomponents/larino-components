@@ -27,6 +27,9 @@ export class DataGrid<T> extends LitElement {
     @state()
     private _count: number = 0
 
+    @state()
+    private _widths: string
+
     @query('.pagination')
     private _pagination: PaginationStrip
 
@@ -45,7 +48,7 @@ export class DataGrid<T> extends LitElement {
     public render() {
         return html`
             <div class="scroll-wrapper">
-                <div class="row header">
+                <div class="row header" style="grid-template-columns:${this._widths};">
                     ${this.renderHeader()}
                 </div>
                 <div class="content">
@@ -94,8 +97,7 @@ export class DataGrid<T> extends LitElement {
     }
 
     private updateWidths() {
-        const widths = this.definitions.map(cd => cd.width ?? '150px').join(' ')
-        this.style.setProperty('--widths', widths)
+        this._widths = this.definitions.map(cd => cd.width ?? '150px').join(' ')
     }
 
     private renderItems(items: T[]) {
@@ -110,7 +112,7 @@ export class DataGrid<T> extends LitElement {
         }
         
         return html`
-            <div class="row" @click=${onInvoke}>
+            <div class="row" style="grid-template-columns:${this._widths};" @click=${onInvoke}>
                 ${this.definitions.map((cd, index) =>
                     this.renderColumn(cd, item, index))}
             </div>

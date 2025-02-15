@@ -34,6 +34,7 @@ declare module '@larinonpm/components/components/data-grid/data-grid' {
       private _invokable;
       private _onInvoke;
       private _count;
+      private _widths;
       private _pagination;
       definitions: GridColumnDefinition<T>[];
       set onRequestItems(callback: RequestItemsCallback<T>);
@@ -139,13 +140,13 @@ declare module '@larinonpm/components/components/form/bound-form' {
       set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>);
       set onvalidated(callback: (valid: boolean) => Promise<void>);
       render(): import("lit-html").TemplateResult<1>;
-      firstUpdated(): void;
       setFieldValues(values: Partial<T>): void;
       setFieldValue(field: string, value: any): void;
       setFieldStates(states: {
           [field: string]: boolean;
       }): void;
       setFieldState(field: string, state: boolean): void;
+      setFieldVisibility(field: string, visible: boolean): void;
       reset(): void;
       private registerItems;
       private attachEventListeners;
@@ -304,7 +305,6 @@ declare module '@larinonpm/components/components/form/form-item' {
       render(): import("lit-html").TemplateResult<1>;
       set onvalidate(callback: (value: any, item: FormItem) => Promise<ValidationResult>);
       set onvalidated(callback: (valid: boolean) => Promise<void>);
-      firstUpdated(): void;
       updated(changes: PropertyValues): void;
       reset(): void;
       private attachControl;

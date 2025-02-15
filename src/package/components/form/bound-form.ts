@@ -44,7 +44,7 @@ export class BoundForm<T> extends LitElement {
         // Register validation callbacks in case not registered.
         // TODO: Revisit. Right now this is a temporary fix.
         this._items.each(item => {
-            item. onvalidate = this._onvalidate.bind(this)
+            item.onvalidate = this._onvalidate.bind(this)
         })
     }
 
@@ -53,11 +53,7 @@ export class BoundForm<T> extends LitElement {
     }
 
     public render() {
-        return html`<slot></slot>`
-    }
-    
-    public firstUpdated() {
-        this.registerItems()
+        return html`<slot @slotchange=${this.registerItems}></slot>`
     }
 
     public setFieldValues(values: Partial<T>) {

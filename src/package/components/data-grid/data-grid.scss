@@ -25,7 +25,6 @@ $border: solid 1px rgb(235, 235, 235);
         ::slotted(.row) {
             display: grid;
             flex-shrink: 0;
-            grid-template-columns: var(--widths);
             height: 40px;
             min-width: 100%;
             transition: background-color 0.3s ease;

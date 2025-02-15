@@ -33,6 +33,7 @@ export class FormItem extends LitElement {
     @property({ type: Boolean })
     public disabled: boolean
 
+    // TODO: Revisit the initialValue role and behavior.
     public set initialValue(value: any) {
         this._initialValue = value
         this.value = value
@@ -58,7 +59,7 @@ export class FormItem extends LitElement {
                 ${this.label}
             </span>
             <div>
-                <slot></slot>
+                <slot @slotchange=${this.attachControl}></slot>
             </div>
         `
     }
@@ -71,10 +72,6 @@ export class FormItem extends LitElement {
     public set onvalidated(callback: (valid: boolean) => Promise<void>) {
         this._onvalidated = callback
     }
-    
-    public firstUpdated() {
-        this.attachControl()
-    }
 
     public updated(changes: PropertyValues): void {
         if (changes.has('disabled'))
@@ -85,10 +82,13 @@ export class FormItem extends LitElement {
         this.initialValue = undefined
     }
 
-    private attachControl() {
-        this._control = this.firstElementChild as HTMLElement
+    private attachControl(e: Event) {
+        const elements = (e.target as HTMLSlotElement).assignedElements({ flatten: true })
+
+        this._control = elements[0] as HTMLElement
         this.value = this._initialValue ?? this.resolveValue()
         this.validate()
+
         this.attachEventListener()
     }
 

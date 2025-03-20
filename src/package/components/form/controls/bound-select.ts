@@ -93,7 +93,7 @@ export class BoundSelect<T> extends LitElement {
             const value = item[this.valueProp] ?? text
 
             return html`
-                <option value="${value}" ?select=${value == this._value}>
+                <option value="${value}" ?selected=${value == this._value}>
                     ${text}
                 </option>
             `

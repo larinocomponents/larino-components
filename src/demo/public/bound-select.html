@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Date Field</title>
+    <title>Bound Select</title>
     <style>
         :root {
             --accent-color: #007bff;
@@ -12,15 +12,11 @@
     </style>
 </head>
 <body>
-    <date-field></date-field>
-    <input id="debug" />
+    <bound-select
+        value-prop="id"
+        text-prop="value"
+        placeholder="Select Option">
+    </bound-select>
     <button id="test">Test Population</button>
-    <div>
-        <p>Test Values</p>
-        <ul>
-            <li>1998-12-31</li>
-            <li>1998-12-31T00:00:00+08:00</li>
-        </ul>
-    </div>
 </body>
 </html>

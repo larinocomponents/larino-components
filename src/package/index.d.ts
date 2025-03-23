@@ -206,13 +206,12 @@ declare module '@larinonpm/components/components/form/controls/date-field' {
   export class DateField extends LitElement {
       static styles: import("lit").CSSResult;
       private _value;
-      private _control;
-      placeholder: string;
-      disabled: boolean;
       get value(): string;
       set value(value: string);
+      disabled: boolean;
       render(): import("lit-html").TemplateResult<1>;
       private onInput;
+      private static normalize;
   }
 
 }

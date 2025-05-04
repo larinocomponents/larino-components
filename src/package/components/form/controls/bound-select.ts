@@ -27,7 +27,7 @@ export class BoundSelect<T> extends LitElement {
     @property()
     public placeholder: string
 
-    @property({ type: Boolean })
+    @property({ type: Boolean, reflect: true })
     public disabled: boolean
 
     public get value(): string {

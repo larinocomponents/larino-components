@@ -11,10 +11,12 @@ const wait = (duration: number) => new Promise<void>(resolve => window.setTimeou
 class View {
     private readonly _select: BoundSelect<Options>
     private readonly _testBtn: HTMLButtonElement
+    private readonly _toggleStateBtn: HTMLButtonElement
 
     constructor() {
         this._select = document.querySelector('bound-select')
         this._testBtn = document.querySelector('button#test')
+        this._toggleStateBtn = document.querySelector('button#toggle-state')
         this.addEventListeners()
     }
 
@@ -24,6 +26,7 @@ class View {
 
     private addEventListeners() {
         this._testBtn.onclick = this.testPopulation.bind(this)
+        this._toggleStateBtn.onclick = this.toggleState.bind(this)
     }
 
     private async testPopulation() {
@@ -36,6 +39,12 @@ class View {
 
         this._select.setOptions(data)
         alert('Done!')
+    }
+
+    private toggleState() {
+        const disabled = !this._select.disabled
+        this._select.disabled = disabled
+        this._select.innerText = disabled ? 'Enable' : 'Disable'
     }
 }
 
